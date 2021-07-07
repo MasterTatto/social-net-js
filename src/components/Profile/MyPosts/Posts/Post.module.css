@@ -2,8 +2,7 @@
     display: flex;
     align-items: center;
 
-    max-width: 310px;
-    justify-content: space-between;
+
 }
 
 .contentPost {
@@ -19,6 +18,7 @@
 .infoBox {
     display: flex;
     flex-direction: column;
+    margin-left: 20px;
 }
 .like {
     font-size: 20px;
