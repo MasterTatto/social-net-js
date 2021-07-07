@@ -1,0 +1,17 @@
+.content {
+    grid-area: c;
+    background-color: #0fa9ff;
+}
+.boxImg {
+/*overflow: hidden;*/
+/*    !*max-width: 100px;*!*/
+/*    !*border-radius: 100%;*!*/
+/*   height: 80px;*/
+/*    max-width: 80px;*/
+
+/*    !*background-image: url("https://www.facefull-news.com/wp-content/uploads/2967447b481b971d1ee66612febcc996.jpg");*!*/
+/*    background-position:  center;*/
+/*    background-repeat: no-repeat;*/
+/*    background-size: cover;*/
+/*    border-radius: 40px;*/
+}
