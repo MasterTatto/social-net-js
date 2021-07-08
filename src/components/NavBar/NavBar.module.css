@@ -2,9 +2,14 @@
     margin-top: 15px;
     font-size: 23px;
     list-style: none;
+    display: flex;
+    align-items: center;
+    /*border:1px solid black;*/
 
 }
-
+.link {
+    margin-left: 10px;
+}
 .nav {
     grid-area: n;
     /*background-color: #5cff1f;*/

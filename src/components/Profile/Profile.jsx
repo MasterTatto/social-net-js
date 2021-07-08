@@ -4,11 +4,15 @@ import MyPosts from "./MyPosts/MyPosts";
 import img from '../../img/bg.jpg' ;
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
+let postsData = [
+    {id: 1, messages: 'Hi,How are you', likeCounts: 15},
+    {id: 2, messages: 'It\'s me first post', likeCounts: 23},
+]
 const Profile = () => {
     return (
         <div>
             <ProfileInfo/>
-            <MyPosts/>
+            <MyPosts postsData={postsData}/>
         </div>
     );
 };

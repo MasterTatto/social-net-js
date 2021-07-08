@@ -3,14 +3,11 @@ import s from './MyPosts.module.css' ;
 import Post from "./Posts/Post";
 import {Button, TextField} from "@material-ui/core";
 
-const MyPosts = () => {
+const MyPosts = (props) => {
 
-    let postsData = [
-        {id:1,messages:'Hi,How are you',likeCounts:15},
-        {id:2,messages:'It\'s me first post',likeCounts:23},
-    ]
+
     //
-    let postElement = postsData.map((p) => {
+    let postElement = props.postsData.map((p) => {
         return <Post messages={p.messages} likeCounts={p.likeCounts} key={p.id}/>
     })
     //
