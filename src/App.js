@@ -7,21 +7,23 @@ import {Route} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
+import {addMessage} from "./redux/state";
 
 
-function App() {
+function App(props) {
     return (
 
         <div className={'app-wrapper'}>
             <Header/>
-            <NavBar/>
+            <NavBar mes={props.state.dialogsPage.messageData}/>
 
             <div className={'app-wrapper-content'}>
-                <Route component={Profile} path={'/profile'}/>
-                <Route component={Dialogs} path={'/dialogs'}/>
-                <Route component={News} path={'/news'}/>
-                <Route component={Music} path={'/music'}/>
-                <Route component={Settings} path={'/settings'}/>
+                <Route render={() => <Profile postsData={props.state.profilePage} addPost={props.addPost}/>} path={'/profile'}/>
+                <Route render={() => <Dialogs dialogs={props.state.dialogsPage} addMessage={props.addMessage}/>}
+                       path={'/dialogs'}/>
+                <Route render={() => <News/>} path={'/news'}/>
+                <Route render={() => <Music/>} path={'/music'}/>
+                <Route render={() => <Settings/>} path={'/settings'}/>
                 {/*<ProfileInfo/>*/}
                 {/*<MessageItem/>*/}
             </div>

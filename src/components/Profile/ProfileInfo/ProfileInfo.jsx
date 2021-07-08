@@ -2,7 +2,7 @@ import React from 'react';
 import s from './ProfileInfo.module.css' ;
 import img from "../../../img/bg.jpg";
 import me from '../../../img/me.jpg'
-import {Avatar} from "@material-ui/core";
+import {Avatar, Paper} from "@material-ui/core";
 
 
 const ProfileInfo = () => {
@@ -11,7 +11,7 @@ const ProfileInfo = () => {
             <div className={s.content}>
                 <div>
                     <Avatar
-                        style={{width: '100%',borderRadius:'0',minHeight:'150px'}}
+                        style={{width: '100%', borderRadius: '0', minHeight: '150px'}}
                         src={img}
                         alt="bi"/>
                 </div>
@@ -21,9 +21,17 @@ const ProfileInfo = () => {
                         <Avatar
                             src={me}
                             alt="men" style={{width: '130px', height: '130px'}}/>
-
+                        <div className={s.paper}  style={{maxWidth:'300px' ,display:'flex',alignItems:'center',flexDirection:'column'}}>
+                            <div style={{display: 'flex', alignItems: 'center',marginTop:'14px'}}>
+                                <h3>Name:</h3><span style={{marginLeft:'15px'}}>Alex</span></div>
+                            <div style={{display: 'flex', alignItems: 'center',marginTop:'14px'}}>
+                                <h3>Sity:</h3><span style={{marginLeft:'15px'}}>Minsk</span></div>
+                            <div style={{display: 'flex', alignItems: 'center',marginTop:'14px'}}>
+                                <h3>Age:</h3><span style={{marginLeft:'15px'}}>23</span></div>
+                        </div>
                     </div>
-                    ava+desc
+
+
                 </div>
             </div>
         </div>

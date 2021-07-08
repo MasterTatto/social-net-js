@@ -7,8 +7,9 @@ import AccountBoxSharpIcon from '@material-ui/icons/AccountBoxSharp';
 import MusicNoteSharpIcon from '@material-ui/icons/MusicNoteSharp';
 import SettingsApplicationsSharpIcon from '@material-ui/icons/SettingsApplicationsSharp';
 import ReceiptSharpIcon from '@material-ui/icons/ReceiptSharp';
+import NavFriend from "./NavFriend/NavFriend";
 
-const NavBar = () => {
+const NavBar = (props) => {
     return (
         <nav className={s.nav}>
             <ul>
@@ -20,7 +21,7 @@ const NavBar = () => {
                     <NavLink className={s.link} activeClassName={s.active} to={'/profile'}>Profile</NavLink>
                 </li>
                 <li className={`${s.item}`}>
-                    <Badge color="secondary" badgeContent={2}>
+                    <Badge color="secondary" badgeContent={props.mes.length}>
                         <MailIcon style={{color: '#1f3bff'}}/>
                     </Badge>
                     <NavLink className={s.link} activeClassName={s.active} to={'/dialogs'}>Messages</NavLink>
@@ -40,6 +41,7 @@ const NavBar = () => {
                              to={'/settings'}>Settings</NavLink>
                 </li>
             </ul>
+            <NavFriend />
         </nav>
     );
 };

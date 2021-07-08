@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import s from './Post.module.css' ;
 import {Avatar} from "@material-ui/core";
-
+import FavoriteIcon from '@material-ui/icons/Favorite';
 const Post = (props) => {
+    let [counter,setCounter] = useState(props.likeCounts)
+    console.log(counter)
     return (
 
         <div className={s.contentPost}>
@@ -14,7 +16,9 @@ const Post = (props) => {
                     alt=""/>
                 <div className={s.infoBox}>
                 <span className={s.span}>{props.messages}</span>
-                <span className={s.like}>like {props.likeCounts}</span>
+                <span className={s.like}>
+                    <FavoriteIcon className={s.heart} onClick={() => setCounter(++counter)}/> {counter}
+                </span>
                 </div>
             </div>
         </div>
