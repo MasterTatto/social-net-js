@@ -23,7 +23,7 @@ function App() {
                 <Route component={Music} path={'/music'}/>
                 <Route component={Settings} path={'/settings'}/>
                 {/*<ProfileInfo/>*/}
-                {/*<Dialogs/>*/}
+                {/*<MessageItem/>*/}
             </div>
 
         </div>

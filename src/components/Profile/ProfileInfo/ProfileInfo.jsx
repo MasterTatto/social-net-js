@@ -10,8 +10,8 @@ const ProfileInfo = () => {
         <div>
             <div className={s.content}>
                 <div>
-                    <img
-                        style={{width: '100%', maxHeight: '300px'}}
+                    <Avatar
+                        style={{width: '100%',borderRadius:'0',minHeight:'150px'}}
                         src={img}
                         alt="bi"/>
                 </div>

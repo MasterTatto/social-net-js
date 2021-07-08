@@ -1,6 +1,7 @@
 import React from 'react';
 import s from './MyPosts.module.css' ;
 import Post from "./Posts/Post";
+import {Button, TextField} from "@material-ui/core";
 
 const MyPosts = () => {
 
@@ -8,21 +9,35 @@ const MyPosts = () => {
         {id:1,messages:'Hi,How are you',likeCounts:15},
         {id:2,messages:'It\'s me first post',likeCounts:23},
     ]
-
+    //
+    let postElement = postsData.map((p) => {
+        return <Post messages={p.messages} likeCounts={p.likeCounts} key={p.id}/>
+    })
+    //
     return (
         <div className={s.posts_block}>
             <h3>My posts</h3>
             <div>
-                <div><textarea/></div>
                 <div>
-                    <button>Add post</button>
+                    <TextField   id="filled-full-width"
+                                 label="Post"
+                                 placeholder="Add new post..."
+                                 fullWidth
+                                 margin="normal"
+                                 InputLabelProps={{
+                                     shrink: true,
+                                 }}
+                                 variant="outlined">
+
+                    </TextField>
+                </div>
+                <div>
+                    <Button style={{transition:'0.5s'}} className={s.btn_grad} variant="outlined" color="primary">Add post</Button>
                 </div>
             </div>
 
             <div>
-                {postsData.map((p) => {
-                    return <Post messages={p.messages} likeCounts={p.likeCounts} key={p.id}/>
-                })}
+                {postElement}
                 {/*<Post messages={'Hi,How are you'} likeCounts={15}/>*/}
                 {/*<Post messages={'It\'s me first post'} likeCounts={23}/>*/}
 
