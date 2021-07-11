@@ -1,11 +1,28 @@
-import React from 'react';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import {state} from './redux/state';
-import {rerenderEntireTree} from "./render";
+import {store} from './redux/state';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import {BrowserRouter} from "react-router-dom";
+// import {addPost} from './redux/state'
+// import {addMessage} from './redux/state'
+// import {subscribe} from './redux/state'
 //
-
-rerenderEntireTree(state)
+export let rerenderEntireTree = (_state) => {
+    ReactDOM.render(
+        <React.StrictMode>
+            <BrowserRouter>
+                <App state={store.getState()}
+                     dispatch={store.dispatch.bind(store)}/>
+            </BrowserRouter>
+        </React.StrictMode>,
+        document.getElementById('root')
+    );
+}
+rerenderEntireTree(store.getState())
+// subscribe(rerenderEntireTree)
 //
 
 

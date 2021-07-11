@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import s from './MyPosts.module.css' ;
 import Post from "./Posts/Post";
 import {Button, TextField} from "@material-ui/core";
-import {v1} from "uuid";
+import {addPostAC} from "../../../redux/state";
+
 
 const MyPosts = (props) => {
 
@@ -36,7 +37,7 @@ const MyPosts = (props) => {
                 </div>
                 <div>
                     <Button onClick={() => {
-                        props.addPost(value)
+                        props.dispatch(addPostAC(value))
                         setValue('')
                     }} style={{transition: '0.5s'}} className={s.btn_grad} variant="outlined" color="primary">Add
                         post</Button>

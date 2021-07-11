@@ -2,7 +2,7 @@ import React from 'react';
 import s from './ProfileInfo.module.css' ;
 import img from "../../../img/bg.jpg";
 import me from '../../../img/me.jpg'
-import {Avatar, Paper} from "@material-ui/core";
+import {Avatar} from "@material-ui/core";
 
 
 const ProfileInfo = () => {
