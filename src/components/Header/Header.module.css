@@ -6,3 +6,9 @@
     grid-area:h ;
 
 }
+h2 {
+    font-size: 37px;
+    background: -webkit-linear-gradient(#f8ff00, #00efff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

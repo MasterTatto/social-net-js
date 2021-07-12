@@ -1,6 +1,6 @@
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import {store} from './redux/state';
+import store from './redux/redux-store';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -10,7 +10,9 @@ import {BrowserRouter} from "react-router-dom";
 // import {addMessage} from './redux/state'
 // import {subscribe} from './redux/state'
 //
-export let rerenderEntireTree = (_state) => {
+
+
+export let rerenderEntireTree = () => {
     ReactDOM.render(
         <React.StrictMode>
             <BrowserRouter>
@@ -22,7 +24,11 @@ export let rerenderEntireTree = (_state) => {
     );
 }
 rerenderEntireTree(store.getState())
-// subscribe(rerenderEntireTree)
+
+store.subscribe(() => {
+    let state = store.getState()
+    rerenderEntireTree(state)
+})
 //
 
 

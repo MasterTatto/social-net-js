@@ -3,7 +3,8 @@ import s from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogsItem";
 import MessageItem from "./MessageItem/MessageItem";
 import {Button, TextField} from "@material-ui/core";
-import {addMessageAC} from "../../redux/state";
+import {addMessageAC} from "../../redux/dialogs-reducer";
+
 
 
 const Dialogs = (props) => {

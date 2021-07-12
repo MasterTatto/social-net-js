@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import s from './MyPosts.module.css' ;
 import Post from "./Posts/Post";
 import {Button, TextField} from "@material-ui/core";
-import {addPostAC} from "../../../redux/state";
+import {addPostAC} from "../../../redux/profile-reducer";
+
 
 
 const MyPosts = (props) => {
