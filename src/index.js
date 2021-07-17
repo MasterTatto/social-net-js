@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import {BrowserRouter} from "react-router-dom";
+import {ADD_POST} from "./redux/store";
 // import {addPost} from './redux/state'
 // import {addMessage} from './redux/state'
 // import {subscribe} from './redux/state'

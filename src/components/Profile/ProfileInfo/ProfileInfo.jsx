@@ -20,14 +20,19 @@ const ProfileInfo = () => {
                     <div className={s.boxImg}>
                         <Avatar
                             src={me}
-                            alt="men" style={{width: '130px', height: '130px'}}/>
-                        <div className={s.paper}  style={{maxWidth:'300px' ,display:'flex',alignItems:'center',flexDirection:'column'}}>
-                            <div style={{display: 'flex', alignItems: 'center',marginTop:'14px'}}>
-                                <h3>Name:</h3><span style={{marginLeft:'15px'}}>Alex</span></div>
-                            <div style={{display: 'flex', alignItems: 'center',marginTop:'14px'}}>
-                                <h3>Sity:</h3><span style={{marginLeft:'15px'}}>Minsk</span></div>
-                            <div style={{display: 'flex', alignItems: 'center',marginTop:'14px'}}>
-                                <h3>Age:</h3><span style={{marginLeft:'15px'}}>23</span></div>
+                            alt="men" style={{width: '260px', height: '260px', borderRadius: '0'}}/>
+                        <div className={s.paper} style={{
+                            maxWidth: '300px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            flexDirection: 'column'
+                        }}>
+                            <div style={{display: 'flex', alignItems: 'center', marginTop: '14px'}}>
+                                <h3>Name:</h3><span style={{marginLeft: '15px'}}>Alex</span></div>
+                            <div style={{display: 'flex', alignItems: 'center', marginTop: '14px'}}>
+                                <h3>Sity:</h3><span style={{marginLeft: '15px'}}>Minsk</span></div>
+                            <div style={{display: 'flex', alignItems: 'center', marginTop: '14px'}}>
+                                <h3>Age:</h3><span style={{marginLeft: '15px'}}>23</span></div>
                         </div>
                     </div>
 

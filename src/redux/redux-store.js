@@ -16,4 +16,5 @@ let reducersPac = combineReducers({
 console.log(store)
 
 
+
 export default store

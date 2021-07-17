@@ -5,17 +5,19 @@ import {Button, TextField} from "@material-ui/core";
 import {addPostAC} from "../../../redux/profile-reducer";
 
 
-
 const MyPosts = (props) => {
 
     const [value, setValue] = useState('')
     //
-    let postElement = props.postsData.postsData.map((p) => {
+    let postElement = props.postsData.map((p) => {
         return <Post messages={p.messages} likeCounts={p.likeCounts} key={p.id}/>
     })
     //
-
-//
+    let addPost = () => {
+        props.addPost(value)
+        setValue('')
+    }
+    //
     return (
         <div className={s.posts_block}>
             <h3>My posts</h3>
@@ -38,8 +40,7 @@ const MyPosts = (props) => {
                 </div>
                 <div>
                     <Button onClick={() => {
-                        props.dispatch(addPostAC(value))
-                        setValue('')
+                        addPost()
                     }} style={{transition: '0.5s'}} className={s.btn_grad} variant="outlined" color="primary">Add
                         post</Button>
                 </div>
@@ -47,9 +48,6 @@ const MyPosts = (props) => {
 
             <div>
                 {postElement}
-                {/*<Post messages={'Hi,How are you'} likeCounts={15}/>*/}
-                {/*<Post messages={'It\'s me first post'} likeCounts={23}/>*/}
-
             </div>
         </div>
     );
