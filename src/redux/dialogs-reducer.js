@@ -17,8 +17,16 @@ let initialState = {
         {id: 4, name: 'Nasty'},
     ]
 }
+//
+let copyInitialState = {
+    ...initialState,
+}
+copyInitialState.dialogsData = [...initialState.dialogsData]
+copyInitialState.messageData = [...initialState.messageData]
 
-export const dialogsReducer = (state = initialState, action) => {
+console.log(copyInitialState)
+//
+export const dialogsReducer = (state = copyInitialState, action) => {
     switch (action.type) {
         case ADD_MESSAGE :
             let newMes = {

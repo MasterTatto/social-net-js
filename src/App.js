@@ -10,6 +10,7 @@ import Settings from "./components/Settings/Settings";
 import {logDOM} from "@testing-library/react";
 import store from "./redux/redux-store";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import NavBarContainer from "./components/NavBar/NavBarContainer";
 
 
 function App(props) {
@@ -17,12 +18,13 @@ function App(props) {
     return (
         <div className={'app-wrapper'}>
             <Header/>
-            <NavBar mes={props.state.dialogsPage.messageData}/>
+            <NavBarContainer/>
+
 
             <div className={'app-wrapper-content'}>
-                <Route render={() => <Profile postsData={props.state.profilePage} dispatch={props.dispatch}/>}
+                <Route render={() => <Profile/>}
                        path={'/profile'}/>
-                <Route render={() => <DialogsContainer store={store}/>}
+                <Route render={() => <DialogsContainer/>}
                        path={'/dialogs'}/>
                 <Route render={() => <News/>} path={'/news'}/>
                 <Route render={() => <Music/>} path={'/music'}/>

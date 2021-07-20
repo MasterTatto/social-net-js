@@ -10,6 +10,7 @@ import ReceiptSharpIcon from '@material-ui/icons/ReceiptSharp';
 import NavFriend from "./NavFriend/NavFriend";
 
 const NavBar = (props) => {
+
     return (
         <nav className={s.nav}>
             <ul>
@@ -22,6 +23,7 @@ const NavBar = (props) => {
                 </li>
                 <li className={`${s.item}`}>
                     <Badge color="secondary" badgeContent={props.mes.length}>
+                        {/*props.mes.length*/}
                         <MailIcon style={{color: '#1f3bff'}}/>
                     </Badge>
                     <NavLink className={s.link} activeClassName={s.active} to={'/dialogs'}>Messages</NavLink>
