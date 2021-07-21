@@ -6,7 +6,6 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 const Post = (props) => {
     let [counter , setCounter] = useState(props.likeCounts)
 
-    console.log(counter)
     return (
 
         <div className={s.contentPost}>

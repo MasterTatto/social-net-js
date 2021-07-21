@@ -6,12 +6,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import {BrowserRouter} from "react-router-dom";
-import {ADD_POST} from "./redux/store";
 import {Provider} from "react-redux";
-// import {addPost} from './redux/state'
-// import {addMessage} from './redux/state'
-// import {subscribe} from './redux/state'
-//
+
 
 
 export let rerenderEntireTree = () => {
@@ -28,12 +24,12 @@ export let rerenderEntireTree = () => {
         document.getElementById('root')
     );
 }
-rerenderEntireTree(store.getState())
-
-store.subscribe(() => {
-    let state = store.getState()
-    rerenderEntireTree(state)
-})
+ rerenderEntireTree()
+//store.getState()
+// store.subscribe(() => {
+//     let state = store.getState()
+//     rerenderEntireTree(state)
+// })
 //
 
 

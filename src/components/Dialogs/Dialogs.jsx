@@ -11,13 +11,13 @@ const Dialogs = (props) => {
 
     //
     const dialogsElement = props.dialogsPage.dialogsData.map((d) => {
-        return <DialogItem name={d.name} id={d.id}/>
+        return <DialogItem name={d.name} id={d.id} key={d.id}/>
     })
     //
 
     //
     const messagesElement = props.dialogsPage.messageData.map((m) => {
-        return <MessageItem message={m.message}/>
+        return <MessageItem message={m.message} key={m.id}/>
     })
     //
     const [value, setValue] = useState('')

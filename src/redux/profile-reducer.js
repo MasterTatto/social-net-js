@@ -1,5 +1,4 @@
 import {v1} from "uuid";
-import {rerenderEntireTree} from "../index";
 import {ADD_POST} from "./store";
 
 let initialState = {
@@ -19,9 +18,13 @@ export const profileReducer = (state = initialState, action) => {
                 messages: action.title,
                 likeCounts: Math.floor(Math.random() * 30)
             }
+            //
+            return {
+                ...state,
+                postsData: [newPost, ...state.postsData]
+            }
+        //
 
-            state.postsData.unshift(newPost)
-            return state
 
         default:
             return state

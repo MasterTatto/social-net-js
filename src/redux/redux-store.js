@@ -1,7 +1,6 @@
 import {combineReducers, createStore} from "redux";
 import {profileReducer} from "./profile-reducer";
 import {dialogsReducer} from "./dialogs-reducer";
-import {rerenderEntireTree} from "../index";
 
 let reducersPac = combineReducers({
     profilePage: profileReducer,
@@ -10,10 +9,7 @@ let reducersPac = combineReducers({
 })
 
 
- let store = createStore(reducersPac);
-
-
-console.log(store)
+let store = createStore(reducersPac);
 
 
 

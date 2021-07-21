@@ -1,5 +1,4 @@
 import {v1} from "uuid";
-import {rerenderEntireTree} from "../index";
 import {ADD_MESSAGE} from "./store";
 
 let initialState = {
@@ -18,15 +17,8 @@ let initialState = {
     ]
 }
 //
-let copyInitialState = {
-    ...initialState,
-}
-copyInitialState.dialogsData = [...initialState.dialogsData]
-copyInitialState.messageData = [...initialState.messageData]
-
-console.log(copyInitialState)
-//
-export const dialogsReducer = (state = copyInitialState, action) => {
+export const dialogsReducer = (state = initialState, action) => {
+    let stateCopy;
     switch (action.type) {
         case ADD_MESSAGE :
             let newMes = {
@@ -34,8 +26,14 @@ export const dialogsReducer = (state = copyInitialState, action) => {
                 message: action.title
             }
 
-            state.messageData.push(newMes)
-            return state
+            stateCopy = {
+                ...state,
+                messageData: [...state.messageData, newMes]
+            }
+
+            //stateCopy.messageData.push(newMes)
+            //
+            return stateCopy
 
         default:
             return state
