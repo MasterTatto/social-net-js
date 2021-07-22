@@ -7,9 +7,11 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import NavBarContainer from "./components/NavBar/NavBarContainer";
+import UsersContainer from "./components/Users/UsersContainer";
 
 
-function App(props) {
+
+function App() {
 
     return (
         <div className={'app-wrapper'}>
@@ -24,6 +26,7 @@ function App(props) {
                        path={'/dialogs'}/>
                 <Route render={() => <News/>} path={'/news'}/>
                 <Route render={() => <Music/>} path={'/music'}/>
+                <Route render={() => <UsersContainer/>} path={'/users'}/>
                 <Route render={() => <Settings/>} path={'/settings'}/>
             </div>
 

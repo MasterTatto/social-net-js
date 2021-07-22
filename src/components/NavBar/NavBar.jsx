@@ -7,6 +7,7 @@ import AccountBoxSharpIcon from '@material-ui/icons/AccountBoxSharp';
 import MusicNoteSharpIcon from '@material-ui/icons/MusicNoteSharp';
 import SettingsApplicationsSharpIcon from '@material-ui/icons/SettingsApplicationsSharp';
 import ReceiptSharpIcon from '@material-ui/icons/ReceiptSharp';
+import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 import NavFriend from "./NavFriend/NavFriend";
 
 const NavBar = (props) => {
@@ -17,10 +18,11 @@ const NavBar = (props) => {
 
                 <li className={`${s.item}`}>
                     <AccountBoxSharpIcon style={{
-                         color: '#1f3bff'
+                        color: '#1f3bff'
                     }}/>
                     <NavLink className={s.link} activeClassName={s.active} to={'/profile'}>Profile</NavLink>
                 </li>
+
                 <li className={`${s.item}`}>
                     <Badge color="secondary" badgeContent={props.mes.length}>
                         {/*props.mes.length*/}
@@ -28,22 +30,30 @@ const NavBar = (props) => {
                     </Badge>
                     <NavLink className={s.link} activeClassName={s.active} to={'/dialogs'}>Messages</NavLink>
                 </li>
+
                 <li className={`${s.item}`}>
                     <ReceiptSharpIcon style={{color: '#1f3bff'}}/>
                     <NavLink className={s.link} activeClassName={s.active}
                              to={'/news'}>News</NavLink>
                 </li>
+
                 <li className={`${s.item}`}>
                     <MusicNoteSharpIcon style={{color: '#1f3bff'}}/>
                     <NavLink className={s.link} activeClassName={s.active}
                              to={'/music'}>Music</NavLink></li>
+
+                <li className={`${s.item}`}>
+                    <SupervisorAccountIcon style={{color: '#1f3bff'}}/>
+                    <NavLink className={s.link} activeClassName={s.active}
+                             to={'/users'}>Users</NavLink></li>
+
                 <li className={`${s.item}`}>
                     <SettingsApplicationsSharpIcon style={{color: '#1f3bff'}}/>
                     <NavLink className={s.link} activeClassName={s.active}
                              to={'/settings'}>Settings</NavLink>
                 </li>
             </ul>
-            <NavFriend />
+            <NavFriend/>
         </nav>
     );
 };
