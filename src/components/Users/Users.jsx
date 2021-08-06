@@ -1,39 +1,58 @@
 import React, {useState} from 'react';
-import {Avatar, Button, Paper} from "@material-ui/core";
-import {v1} from "uuid";
-import axios from "axios";
+import {Avatar, Button, Paper, TextField} from "@material-ui/core";
+
 import s from './user.module.css'
 
-class Users extends React.Component {
-    constructor(props) {
-        super(props);
+const Users = (props) => {
+    const [value, setValue] = useState(null)
+    const total = Math.ceil(props.totalUsers / props.pageSize)
+    return (
+        <div>
+            <div className={s.count}>
 
-        axios.get('https://social-network.samuraijs.com/api/1.0/users')
-            .then(response => {
-                this.props.setUsers(response.data.items)
-            })
-    }
+                <Button variant="outlined" color="secondary" onClick={() => {
+                    if (props.currentPage > 1) {
+                        props.onPageChanged(props.currentPage - 1)
+                    } else {
+                        props.onPageChanged(1)
+                    }
+                }}>
+                    back
+                </Button>
+                <span className={s.span}>{props.currentPage} / {total}</span>
 
-    getUsers = () => {
-        if (this.props.users.length === 0) {
-            axios.get('https://social-network.samuraijs.com/api/1.0/users')
-                .then(response => {
-                    this.props.setUsers(response.data.items)
-                })
-        } else {
-            console.log('all good')
-        }
-    }
-    render = () => {
-        console.log(this.props)
-        return (
-            <div>
-                {/*<Button variant="contained" color='secondary' onClick={this.getUsers} style={{width: '100%'}}>Show*/}
-                {/*    Users</Button>*/}
+                <TextField label={'Page number'} type="number" value={value}
+                           onChange={(e) => setValue(e.currentTarget.value)}
+                           onKeyPress={(e) => {
+                               if (e.key === 'Enter') {
+                                   props.onPageChanged(value)
+                                   setValue('')
+                               }
+
+                           }
+                           }
+                />
+
+                <Button variant="outlined" color="secondary"
+                        onClick={() => {
+                            if (props.currentPage < total) {
+                                props.onPageChanged(props.currentPage + 1)
+                            } else {
+                                props.onPageChanged(total)
+                            }
+                        }}>
+                    next
+                </Button>
+
+            </div>
+
+            <div className={s.box}>
+
                 {
-                    this.props.users.map((u) => {
+                    props.users.map((u) => {
 
                         return (
+
                             <Paper key={u.id} elevation={9} className={s.user_block}>
                                 <div className={s.first}>
                                     <div className={s.photo}>
@@ -49,9 +68,9 @@ class Users extends React.Component {
                                     <div>
                                         {u.followed ?
                                             <Button variant="outlined" color="primary"
-                                                    onClick={() => this.props.unfollowUser(u.id)}>Follow</Button> :
+                                                    onClick={() => props.unfollowUser(u.id)}>Follow</Button> :
                                             <Button variant="outlined" color="secondary"
-                                                    onClick={() => this.props.followUser(u.id)}>UnFollow</Button>}
+                                                    onClick={() => props.followUser(u.id)}>UnFollow</Button>}
                                     </div>
 
                                 </div>
@@ -67,8 +86,7 @@ class Users extends React.Component {
                     })
                 }
             </div>
-        );
-    }
+        </div>
+    )
 }
-
 export default Users;
