@@ -8,24 +8,37 @@ import Settings from './components/Settings/Settings';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import NavBarContainer from './components/NavBar/NavBarContainer';
 import UsersContainer from './components/Users/UsersContainer';
-import { Route } from 'react-router-dom';
+import {Route} from 'react-router-dom';
+import ProfileContainer from "./components/Profile/ProfileContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
+import {useSelector} from "react-redux";
+import {logDOM} from "@testing-library/react";
 
 function App() {
-	return (
-		<div className={'app-wrapper'}>
-			<Header />
-			<NavBarContainer />
+    const auth = useSelector((state) => {
+        return state.auth
+    })
 
-			<div className={'app-wrapper-content'}>
-				<Route render={() => <Profile />} path={'/profile'} />
-				<Route render={() => <DialogsContainer />} path={'/dialogs'} />
-				<Route render={() => <News />} path={'/news'} />
-				<Route render={() => <Music />} path={'/music'} />
-				<Route render={() => <UsersContainer />} path={'/users'} />
-				<Route render={() => <Settings />} path={'/settings'} />
-			</div>
-		</div>
-	);
+    return (
+        <div className={'app-wrapper'}>
+            <HeaderContainer/>
+
+            {auth.inAuth ? (
+                <>
+                    <NavBarContainer/>
+                    <div className={'app-wrapper-content'}>
+                        <Route render={() => <ProfileContainer/>} path={'/profile/:userId?'}/>
+                        <Route render={() => <DialogsContainer/>} path={'/dialogs'}/>
+                        <Route render={() => <News/>} path={'/news'}/>
+                        <Route render={() => <Music/>} path={'/music'}/>
+                        <Route render={() => <UsersContainer/>} path={'/users'}/>
+                        <Route render={() => <Settings/>} path={'/settings'}/>
+                    </div>
+                </>
+            ) : ''}
+
+        </div>
+    );
 }
 
 export default App;

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import s from './Header.module.css';
 
 
@@ -10,12 +10,23 @@ import {
     Typography
 } from "@material-ui/core";
 import MenuIcon from '@material-ui/icons/Menu';
+import {NavLink} from "react-router-dom";
+import axios from "axios";
+import {useDispatch} from "react-redux";
+import {logDOM} from "@testing-library/react";
+import {InAuthAC, SetUserDataAC} from "../../redux/auth-reducer";
 
 
-const Header = () => {
-
+const Header = (props) => {
+    // const dispatch = useDispatch()
+    // useEffect(() => {
+    //     axios.get('https://social-network.samuraijs.com/api/1.0/auth/me')
+    //         .then(response => {
+    //            dispatch(SetUserDataAC(response.data))
+    //         })
+    // }, [])
     const [clickItem, setClickItem] = useState(false)
-    console.log(clickItem)
+
     return (
 
         <header className={s.header}>
@@ -27,9 +38,9 @@ const Header = () => {
                         }}/>
                     </IconButton>
                     <Typography variant="h6">
-                        <h2>MasterTatto</h2>
+                        <h2>{props.inAuth ? props.login : ''}</h2>
                     </Typography>
-                    <Button color="inherit">Login</Button>
+                    <NavLink to={'/login'} className={s.btn_login} onClick={() => props.inAuth ? props.InAuthAC(false) : props.InAuthAC(true)}>{props.inAuth ? 'Exit' : 'Login'}</NavLink>
                 </Toolbar>
 
             </AppBar>
