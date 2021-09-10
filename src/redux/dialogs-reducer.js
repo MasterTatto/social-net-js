@@ -39,10 +39,11 @@ export const dialogsReducer = (state = initialState, action) => {
             return state
     }
 }
-
+//ACTION_CREATOR
 export const addMessageAC = (title) => {
     return {
         type: ADD_MESSAGE,
         title
     }
 }
+//

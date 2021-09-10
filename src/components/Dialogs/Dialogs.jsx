@@ -3,12 +3,13 @@ import s from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogsItem";
 import MessageItem from "./MessageItem/MessageItem";
 import {Button, TextField} from "@material-ui/core";
-
+import {Redirect} from "react-router-dom";
 
 
 const Dialogs = (props) => {
     //
 
+    console.log(props)
     //
     const dialogsElement = props.dialogsPage.dialogsData.map((d) => {
         return <DialogItem name={d.name} id={d.id} key={d.id}/>
@@ -26,6 +27,11 @@ const Dialogs = (props) => {
         props.addMessage(value)
         setValue('')
     }
+
+
+    if (!props.auth.inAuth) return <Redirect to={'/login'}/>
+
+
     return (
 
         <div className={s.dialogs}>

@@ -13,29 +13,32 @@ import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import {useSelector} from "react-redux";
 import {logDOM} from "@testing-library/react";
+import Login from "./components/login/login";
 
 function App() {
     const auth = useSelector((state) => {
         return state.auth
     })
-
+    console.log(auth.inAuth)
     return (
         <div className={'app-wrapper'}>
             <HeaderContainer/>
 
-            {auth.inAuth ? (
-                <>
-                    <NavBarContainer/>
-                    <div className={'app-wrapper-content'}>
-                        <Route render={() => <ProfileContainer/>} path={'/profile/:userId?'}/>
-                        <Route render={() => <DialogsContainer/>} path={'/dialogs'}/>
-                        <Route render={() => <News/>} path={'/news'}/>
-                        <Route render={() => <Music/>} path={'/music'}/>
-                        <Route render={() => <UsersContainer/>} path={'/users'}/>
-                        <Route render={() => <Settings/>} path={'/settings'}/>
-                    </div>
-                </>
-            ) : ''}
+
+            <NavBarContainer/>
+            <div className={'app-wrapper-content'}>
+                <Route render={() => <ProfileContainer/>} path={'/profile/:userId?'}/>
+                <Route render={() => <DialogsContainer/>} path={'/dialogs'}/>
+                <Route render={() => <News/>} path={'/news'}/>
+                <Route render={() => <Music/>} path={'/music'}/>
+                <Route render={() => <UsersContainer/>} path={'/users'}/>
+                <Route render={() => <Settings/>} path={'/settings'}/>
+
+                <Route render={() => <Login/>} path={'/login'}/>
+
+
+            </div>
+
 
         </div>
     );

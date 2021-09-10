@@ -8,20 +8,22 @@ const instansAxios = axios.create({
         },
     }
 )
+export const usersAPI = {
+    getUsers: (currentPage, pageSize) => {
+        return instansAxios.get(`users?page=${currentPage}&count=${pageSize}`)
+            .then(response => response.data)
+    },
+    unfolowUser: (id) => {
+        return instansAxios.delete(`follow/${id}`)
+    },
+    followUser: (id) => {
+        return instansAxios.post(`follow/${id}`)
+    },
+    getMineInfoPage: () => {
+        return instansAxios.get(`auth/me`).then(response => response.data)
 
-export const getUsers = (currentPage, pageSize) => {
-    return instansAxios.get(`users?page=${currentPage}&count=${pageSize}`)
-        .then(response => response.data)
-}
-
-export const unfolowUser = (id) => {
-    return instansAxios.delete(`follow/${id}`)
-}
-
-export const followUser = (id) => {
-    return instansAxios.post(`follow/${id}`)
-}
-export const getUserData = () => {
-    return instansAxios.get(`auth/me`).then(response => response.data)
-
+    },
+    getProfileInfo: (userID) => {
+        return instansAxios.get(`profile/${userID}`)
+    }
 }

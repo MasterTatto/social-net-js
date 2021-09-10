@@ -4,7 +4,8 @@ import {Avatar, Button, Paper, TextField} from "@material-ui/core";
 import s from './user.module.css'
 import {NavLink} from "react-router-dom";
 import axios from "axios";
-import {followUser, unfolowUser} from "../../api/api";
+import {followUser, unfolowUser, usersAPI} from "../../api/api";
+import {followingThunkCreator, unFollowThunkCreator} from "../../redux/users-reducer";
 
 const Users = (props) => {
 
@@ -76,35 +77,14 @@ const Users = (props) => {
                                             (<Button disabled={props.followingProgress.some(id => id === u.id)}
                                                      variant="outlined"
                                                      color="secondary"
-                                                     onClick={() => {
-                                                         props.followingProgressAC(true, u.id)
-
-                                                         unfolowUser(u.id)
-                                                             .then(response => {
-
-                                                                 if (response.data.resultCode === 0) {
-                                                                     props.unfollowUser(u.id)
-                                                                 }
-                                                                 props.followingProgressAC(false, u.id)
-                                                             })
-                                                     }}>
+                                                     onClick={() => props.followingThunkCreator(u.id)}>
                                                 UnFollow
                                             </Button>)
                                             :
 
                                             (<Button disabled={props.followingProgress.some(id => id === u.id)}
                                                      variant="outlined" color="primary"
-                                                     onClick={() => {
-                                                         props.followingProgressAC(true, u.id)
-                                                         followUser(u.id)
-                                                             .then(response => {
-
-                                                                 if (response.data.resultCode === 0) {
-                                                                     props.followUser(u.id)
-                                                                 }
-                                                                 props.followingProgressAC(false, u.id)
-                                                             })
-                                                     }}>
+                                                     onClick={() => props.unFollowThunkCreator(u.id)}>
                                                 Follow
                                             </Button>)
                                         }

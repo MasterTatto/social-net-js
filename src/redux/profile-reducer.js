@@ -1,5 +1,6 @@
 import {v1} from "uuid";
 import {ADD_POST} from "./store";
+import {usersAPI} from "../api/api";
 
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
 let initialState = {
@@ -33,7 +34,7 @@ export const profileReducer = (state = initialState, action) => {
             return state
     }
 }
-
+//ACTION_CREATOR
 export const addPostAC = (title) => {
     return {
         type: ADD_POST,
@@ -46,3 +47,14 @@ export const setUserProfileAC = (profile) => {
         profile
     }
 }
+//
+//THUNK
+export const getUsersProfileThunkCreator = (id) => {
+    return (dispatch) => {
+        usersAPI.getProfileInfo(id)
+            .then(answer => {
+                dispatch(setUserProfileAC(answer.data))
+            })
+    }
+}
+//

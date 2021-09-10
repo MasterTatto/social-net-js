@@ -22,11 +22,9 @@ li {
 
 .app-wrapper-content {
     grid-area: c;
-    /*background: rgb(8, 121, 17);*/
-    /*background: linear-gradient(160deg, rgba(8, 121, 17, 0.45) 14%, rgba(4, 7, 136, 0.45) 30%, rgba(121, 9, 109, 0.45) 45%, rgba(172, 173, 4, 0.45) 60%, rgba(38, 148, 209, 0.45) 71%, rgba(255, 0, 74, 0.4514180672268907) 92%);*/
+
     background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 70%);
-    /*    background-image: linear-gradient( 90.5deg,  rgba(255,207,139,0.50) 1.1%, rgba(255,207,139,1) 80.3% );*/
-    /*}*/
+
 }
 
 .lds-hourglass {
@@ -35,6 +33,7 @@ li {
     /*width: 180px;*/
     /*height: 180px;*/
 }
+
 .lds-hourglass:after {
     content: " ";
     display: block;
@@ -47,6 +46,7 @@ li {
     border-color: #ec09fc transparent #ec09fc transparent;
     animation: lds-hourglass 1.9s infinite;
 }
+
 @keyframes lds-hourglass {
     0% {
         transform: rotate(0);

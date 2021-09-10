@@ -1,4 +1,5 @@
 import {v1} from "uuid";
+import {usersAPI} from "../api/api";
 
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
@@ -69,7 +70,7 @@ export const usersReducer = (state = initialState, action) => {
             return state
     }
 }
-
+//ACTION_CREATOR
 export const followingProgressAC = (isFetch, id) => {
     return {
         type: 'TOGGLE_IN_FOLLOWING_PROGRESS', isFetch, id
@@ -111,3 +112,56 @@ export const setToggleFetchingAC = (fetch) => {
         fetch
     }
 }
+//
+//THUNK
+export const getUsersThunkCreator = (currentPage, pageSize) => {
+    return (dispatch) => {
+        dispatch(setToggleFetchingAC(true))
+        usersAPI.getUsers(currentPage, pageSize)
+            .then(response => {
+                dispatch(setToggleFetchingAC(false))
+                dispatch(setUsersAC(response.items))
+                dispatch(setTotalCountAC(response.totalCount))
+
+            })
+    }
+}
+export const onPageChangedThunkCreator = (page, pageSize) => {
+    return (dispatch) => {
+        dispatch(setCurrentPageAC(page))
+        dispatch(setToggleFetchingAC(true))
+        usersAPI.getUsers(page, pageSize)
+            .then(response => {
+                dispatch(setToggleFetchingAC(false))
+                dispatch(setUsersAC(response.items))
+
+            })
+    }
+}
+export const followingThunkCreator = (id) => {
+    return (dispatch) => {
+        dispatch(followingProgressAC(true, id))
+
+        usersAPI.unfolowUser(id)
+            .then(response => {
+
+                if (response.data.resultCode === 0) {
+                    dispatch(unFollowAC(id))
+                }
+                dispatch(followingProgressAC(false, id))
+            })
+    }
+}
+export const unFollowThunkCreator = (id) => {
+    return (dispatch) => {
+        dispatch(followingProgressAC(true, id))
+        usersAPI.followUser(id)
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(followAC(id))
+                }
+                dispatch(followingProgressAC(false, id))
+            })
+    }
+}
+//
