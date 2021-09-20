@@ -9,7 +9,7 @@ import {Redirect} from "react-router-dom";
 const Dialogs = (props) => {
     //
 
-    console.log(props)
+
     //
     const dialogsElement = props.dialogsPage.dialogsData.map((d) => {
         return <DialogItem name={d.name} id={d.id} key={d.id}/>
@@ -27,9 +27,6 @@ const Dialogs = (props) => {
         props.addMessage(value)
         setValue('')
     }
-
-
-    if (!props.auth.inAuth) return <Redirect to={'/login'}/>
 
 
     return (
@@ -57,5 +54,6 @@ const Dialogs = (props) => {
 
     );
 };
+
 
 export default Dialogs;

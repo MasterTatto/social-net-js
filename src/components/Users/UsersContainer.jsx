@@ -10,6 +10,8 @@ import {
 import Users from "./Users";
 import s from './user.module.css'
 import Loader from "../loader/Loader";
+import {compose} from "redux";
+import {withAuthRedirect} from "../../hoc/WithAuthRedirect";
 
 
 //
@@ -61,11 +63,14 @@ let mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, {
-    followUser: followAC,
-    unfollowUser: unFollowAC,
-    getUsersThunkCreator: getUsersThunkCreator,
-    onPageChangedThunkCreator: onPageChangedThunkCreator,
-    followingThunkCreator: followingThunkCreator,
-    unFollowThunkCreator: unFollowThunkCreator
-})(UsersContainer);
+export default compose(
+    connect(mapStateToProps, {
+        followUser: followAC,
+        unfollowUser: unFollowAC,
+        getUsersThunkCreator: getUsersThunkCreator,
+        onPageChangedThunkCreator: onPageChangedThunkCreator,
+        followingThunkCreator: followingThunkCreator,
+        unFollowThunkCreator: unFollowThunkCreator
+    }),
+    withAuthRedirect
+)(UsersContainer)

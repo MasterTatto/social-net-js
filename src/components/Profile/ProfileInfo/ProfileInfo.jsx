@@ -4,10 +4,11 @@ import img from "../../../img/bg.jpg";
 import me from '../../../img/me.jpg'
 import {Avatar} from "@material-ui/core";
 import Loader from "../../loader/Loader";
+import ProfileStatus from "../profileStatus/profileStatus";
 
 
 const ProfileInfo = (props) => {
-
+    console.log(props)
     if (!props.profile) {
         return <Loader/>
     } else {
@@ -19,10 +20,12 @@ const ProfileInfo = (props) => {
                             style={{width: '100%', borderRadius: '0', minHeight: '150px'}}
                             src={img}
                             alt="bi"/>
+                        <ProfileStatus status={'hello'}/>
                     </div>
 
                     <div className={s.description_block}>
                         <div className={s.boxImg}>
+
                             <Avatar
                                 src={props.profile.photos.small === null ? 'https://yt3.ggpht.com/ytc/AAUvwnihIIjfolgDP46s4snHGuI9U1oY-gppxfU2l0YFNDc=s900-c-k-c0x00ffffff-no-rj' : props.profile.photos.large}
                                 alt="men" style={{width: '260px', height: '260px', borderRadius: '0'}}/>

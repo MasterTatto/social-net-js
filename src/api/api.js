@@ -27,3 +27,5 @@ export const usersAPI = {
         return instansAxios.get(`profile/${userID}`)
     }
 }
+
+

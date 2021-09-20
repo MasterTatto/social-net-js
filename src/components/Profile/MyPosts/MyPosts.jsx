@@ -5,7 +5,7 @@ import {Button, TextField} from "@material-ui/core";
 
 
 const MyPosts = (props) => {
-
+    console.log(props)
     const [value, setValue] = useState('')
     //
     let postElement = props.postsData.map((p) => {
@@ -13,7 +13,7 @@ const MyPosts = (props) => {
     })
     //
     let addPost = () => {
-        props.addPost(value)
+        props.addPostAC(value)
         setValue('')
     }
     //
@@ -38,9 +38,8 @@ const MyPosts = (props) => {
                     </TextField>
                 </div>
                 <div>
-                    <Button onClick={() => {
-                        addPost()
-                    }} style={{transition: '0.5s'}} className={s.btn_grad} variant="outlined" color="primary">Add
+                    <Button onClick={addPost} style={{transition: '0.5s'}} className={s.btn_grad}
+                            variant="outlined" color="primary">Add
                         post</Button>
                 </div>
             </div>

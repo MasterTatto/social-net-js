@@ -15,7 +15,6 @@ import {NavLink} from "react-router-dom";
 
 const Header = (props) => {
 
-    console.log(props.auth)
     return (
 
         <header className={s.header}>
