@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './ProfileInfo.module.css' ;
 import img from "../../../img/bg.jpg";
-import me from '../../../img/me.jpg'
+
 import {Avatar} from "@material-ui/core";
 import Loader from "../../loader/Loader";
 import ProfileStatus from "../profileStatus/profileStatus";
@@ -20,7 +20,7 @@ const ProfileInfo = (props) => {
                             style={{width: '100%', borderRadius: '0', minHeight: '150px'}}
                             src={img}
                             alt="bi"/>
-                        <ProfileStatus status={'hello'}/>
+                        <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
                     </div>
 
                     <div className={s.description_block}>

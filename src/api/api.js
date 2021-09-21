@@ -23,9 +23,18 @@ export const usersAPI = {
         return instansAxios.get(`auth/me`).then(response => response.data)
 
     },
-    getProfileInfo: (userID) => {
-        return instansAxios.get(`profile/${userID}`)
-    }
 }
 
+export const profileAPI = {
+
+    getProfileInfo: (userID) => {
+        return instansAxios.get(`profile/${userID}`)
+    },
+    getStatus(UserId) {
+        return instansAxios.get(`profile/status/${UserId}`)
+    },
+    updateStatus(status) {
+        return instansAxios.put('profile/status', {status})
+    }
+}
 

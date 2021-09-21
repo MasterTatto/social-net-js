@@ -1,6 +1,6 @@
 import {v1} from "uuid";
-import {ADD_MESSAGE} from "./store";
 
+ export const ADD_MESSAGE = "ADD-MESSAGE";
 let initialState = {
     messageData: [
         {id: v1(), message: 'Hello'},

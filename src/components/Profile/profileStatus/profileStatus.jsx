@@ -1,39 +1,60 @@
-import s from './profileStatus.module.css'
-
 import React from 'react';
 
+
 class ProfileStatus extends React.Component {
+    valueRef = React.createRef()
     state = {
         editMode: false,
+        status: this.props.status
     }
 
-    deactiveteEditMode() {
+    deactiveteEditMode = () => {
         this.setState({
             editMode: false
         })
+        this.props.updateStatus(this.state.status)
     }
 
-    activateEditMode() {
+    activateEditMode = () => {
         this.setState({
-            editMode: true
+            editMode: true,
+
+        })
+    }
+    onStatusChange = (e) => {
+        this.setState({
+            status: e.currentTarget.value
         })
     }
 
+    componentDidUpdate(PreProps, PreState) {
+        if (PreProps.status !== this.props.status) {
+
+            this.setState({
+                status: this.props.status
+            })
+        }
+
+    }
+
     render() {
-        console.log(this.state)
+
         return (
             <div>
                 {
                     this.state.editMode ?
                         (<div>
-                            <h3>Status: <input onBlur={this.deactiveteEditMode.bind(this)} autoFocus
-                                               value={this.props.status}/>
+                            <h3>Status:
+                                <input onBlur={this.deactiveteEditMode} autoFocus
+                                       value={this.state.status}
+                                       onChange={(e) => this.onStatusChange(e)}/>
                             </h3>
                         </div>)
                         :
                         (<div>
                             <h3>Status: <span
-                                onDoubleClick={this.activateEditMode.bind(this)}>{this.props.status}</span></h3>
+                                onDoubleClick={this.activateEditMode}>{this.props.status || '--------'}</span>
+                            </h3>
                         </div>)
                 }
 
